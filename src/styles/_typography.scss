@@ -1,0 +1,42 @@
+@use "./variables";
+
+h1, h2, h3, blockquote, pre {
+  font-family: variables.$font-family;
+  font-style: normal;
+  font-variant: normal;
+}
+
+h1 {
+  font-family: variables.$font-family;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 26.4px;
+}
+
+h3 {
+  font-family: variables.$font-family;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+}
+
+p {
+  font-family: variables.$font-family;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+blockquote {
+  font-family: variables.$font-family;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+pre {
+  font-family: variables.$font-family;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18.5714px;
+}

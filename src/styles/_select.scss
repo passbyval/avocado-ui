@@ -1,0 +1,31 @@
+@use "./variables";
+@use "./animation";
+
+$border-color: variables.$grey;
+
+.select {
+  @extend.input-base;
+  @include animation.createBounce($border-color);
+  padding-left: variables.$standard-padding;
+  padding-right: 40px;
+  appearance: none;
+  cursor: pointer;
+  border: 1px solid $border-color;
+
+  &:focus {
+    @include variables.createOutline($border-color);
+  }
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}

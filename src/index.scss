@@ -1,0 +1,21 @@
+@use "./styles/palette";
+@use "./styles/buttons";
+@use "./styles/layout";
+@use "./styles/typography";
+@use "./styles/variables";
+@use "./styles/label";
+@use "./styles/dropdown";
+@use "./styles/select";
+@use "./styles/input";
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  font-size: 12px;
+}
+
+body {
+  background: variables.$light-grey;
+}

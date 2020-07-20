@@ -1,0 +1,16 @@
+@use "./variables";
+@use "./animation";
+
+$border-color: variables.$grey;
+
+.input {
+  @extend.input-base;
+  @include animation.createBounce($border-color);
+  padding-left: variables.$standard-padding;
+  padding-right: variables.$standard-padding;
+  border: 1px solid $border-color;
+
+  &:focus {
+    @include variables.createOutline($border-color);
+  }
+}

@@ -1,0 +1,26 @@
+@use "./variables";
+
+.container {
+  padding: 30px;
+  margin: 30px;
+  background: white;
+  border-radius: variables.$border-radius;
+  box-shadow: variables.$box-shadow;
+
+  & h1:first-child {
+    margin-top: 0;
+  }
+}
+
+.row {
+  display: block;
+  width: 100%;
+  margin-bottom: variables.$standard-padding;
+  margin-top: variables.$standard-padding;
+}
+
+hr {
+  border-color: variables.$light-grey;
+  margin: 20px 0 20px 0;
+  border-width: 1px;
+}

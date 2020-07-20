@@ -1,0 +1,48 @@
+$red: #E1515F;
+$green: #83BD4C;
+$blue: #2376FB;
+$grey: #9CA3AB;
+$cyan: #08b2e3;
+$light-grey: #E9EAEC;
+$dark-cyan: #08ABD9;
+
+$colors: (
+  "red": $red,
+  "green": $green,
+  "blue": $blue,
+  "cyan": $cyan,
+  "grey": $grey
+);
+
+$friendly-names: (
+  "red": "danger",
+  "green": "success",
+  "blue": "primary",
+  "cyan": "info",
+  "grey": "default"
+);
+
+@function getFocusOutline($color, $spread: 3px) {
+  @return 0px 0px 0px $spread rgba($color, .5);
+}
+
+@mixin createOutline($color) {
+  outline: 0;
+  box-shadow: getFocusOutline($color);
+}
+
+$border-radius: 4px;
+$font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$gradient-step: (100 / length($colors));
+$box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.1);
+$standard-padding: 15px;
+$input-height: 40px;
+$input-font-size: 15px;
+
+.input-base {
+  display: inline-block;
+  font-family: $font-family;
+  height: $input-height;
+  border-radius: $border-radius;
+  font-size: $input-font-size;
+}

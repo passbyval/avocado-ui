@@ -1,0 +1,13 @@
+@use "./variables";
+
+.label {
+  font-family: variables.$font-family;
+  font-size: variables.$input-font-size;
+  display: inline-block;
+  padding-bottom: 3px;
+  font-weight: 400;
+
+  ~ .select, ~ .input {
+    display: block;
+  }
+}

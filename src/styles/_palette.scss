@@ -1,0 +1,25 @@
+@use "./variables";
+
+$degrees: 90deg;
+
+.palette {
+  $gradient: $degrees;
+  width: 100%;
+  min-height: 100px;
+  border-radius: variables.$border-radius;
+  box-shadow: variables.$box-shadow;
+  transition: box-shadow 0.2s ease-in-out;
+  max-width: 1000px;
+
+  @each $name, $color in variables.$colors {
+    $index: index((variables.$colors), ($name $color));
+    $step: #{$index * variables.$gradient-step};
+    $gradient: $gradient + ", " + $color + " " + $step + "%"
+  }
+
+  background: linear-gradient(unquote(($gradient)));
+
+  &:hover {
+    box-shadow: variables.getFocusOutline(variables.$blue);
+  }
+}
