@@ -1,8 +1,21 @@
 @use "./variables";
 
 .container {
-  padding: 30px;
-  margin: 30px;
+  padding: variables.$standard-padding;
+  margin: variables.$standard-padding;
+
+  & h1:first-child {
+    margin-top: 0;
+  }
+
+  + .box {
+    margin-top: -(variables.$standard-padding * 2);
+  }
+}
+
+.box {
+  padding: variables.$standard-padding * 2;
+  margin: variables.$standard-padding * 2;
   background: white;
   border-radius: variables.$border-radius;
   box-shadow: variables.$box-shadow;
@@ -12,7 +25,7 @@
   }
 }
 
-.row {
+.row, .form-group {
   display: block;
   width: 100%;
   margin-bottom: variables.$standard-padding;
@@ -20,7 +33,7 @@
 }
 
 hr {
-  border-color: variables.$light-grey;
+  border: 1px solid variables.$light-grey;
   margin: 20px 0 20px 0;
   border-width: 1px;
 }

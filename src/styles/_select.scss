@@ -7,7 +7,7 @@ $border-color: variables.$grey;
   @extend.input-base;
   @include animation.createBounce($border-color);
   padding-left: variables.$standard-padding;
-  padding-right: 40px;
+  padding-right: variables.$standard-padding * 2;
   appearance: none;
   cursor: pointer;
   border: 1px solid $border-color;

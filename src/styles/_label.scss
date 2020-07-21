@@ -3,11 +3,16 @@
 .label {
   font-family: variables.$font-family;
   font-size: variables.$input-font-size;
-  display: inline-block;
+  margin-right: variables.$standard-padding;
+  display: block;
   padding-bottom: 3px;
   font-weight: 400;
 
-  ~ .select, ~ .input {
-    display: block;
+  &.inline {
+    display: inline-block;
+
+    + .select, + .input {
+      display: inline-block;
+    }
   }
 }

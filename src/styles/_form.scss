@@ -1,0 +1,7 @@
+.form {
+  &.inline {
+    .select, .btn, .dropdown, .label {
+      display: inline-block;
+    }
+  }
+}

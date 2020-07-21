@@ -46,6 +46,20 @@ $background-color: #FFF;
       cursor: pointer;
       list-style: none;
 
+      &:first-child {
+        a {
+          border-top-left-radius: variables.$border-radius;
+          border-top-right-radius: variables.$border-radius;
+        }
+      }
+
+      &:last-child {
+        a {
+          border-bottom-left-radius: variables.$border-radius;
+          border-bottom-right-radius: variables.$border-radius;
+        }
+      }
+
       a {
         color: inherit;
         transition: background 0.2s ease-in-out;

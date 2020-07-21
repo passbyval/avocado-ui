@@ -13,4 +13,8 @@ $border-color: variables.$grey;
   &:focus {
     @include variables.createOutline($border-color);
   }
+
+  &.inline {
+    display: inline-block;
+  }
 }

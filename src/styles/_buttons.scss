@@ -15,8 +15,19 @@ $link-color: variables.$dark-cyan;
   transition-timing-function: ease-in-out;
   box-shadow: variables.$box-shadow;
 
-  ~ .btn {
+  + .btn {
     margin-left: 15px;
+  }
+
+  &.block {
+    display: block;
+  }
+
+  &.inline {
+    display: inline-block;
+    ~ .label {
+      display: inline-block;
+    }
   }
 
   &.link {
