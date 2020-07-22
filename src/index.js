@@ -7,14 +7,34 @@ const getAllButtons = () => document.querySelectorAll('.btn')
 const getAllInputs = () => document.querySelectorAll('.select, .input')
 const getDropdownButtons = () => document.querySelectorAll('.dropdown > .btn')
 
+const isDropdown = (element) => {
+  if (element) {
+    return element.classList.contains('dropdown') ? true : isDropdown(element.parentElement)
+  }
+  return false
+}
+
+const hideAllDropdowns = () => {
+  getDropdownButtons().forEach((button) => {
+    button.parentElement.classList.remove(SHOW_CLASS)
+    button.setAttribute('aria-expanded', 'false')
+  })
+}
+
 document.addEventListener('click', ({ target }) => {
   if (!target.classList.contains('btn')) {
-    getDropdownButtons().forEach((button) => {
-      button.parentElement.classList.remove(SHOW_CLASS)
-      button.setAttribute('aria-expanded', 'false')
-    })
+    hideAllDropdowns()
   }
 })
+
+// document.addEventListener('keydown', ({ target, key }) => {
+//   if (key === 'Tab') {
+//     console.log('Tabbed!', isDropdown(target), {target})
+//     if (!isDropdown(target)) {
+//       hideAllDropdowns()
+//     }
+//   }
+// })
 
 getAllInputs().forEach((input) => {
   input.addEventListener('click', ({ target: input }) => {
@@ -24,7 +44,7 @@ getAllInputs().forEach((input) => {
 })
 
 getAllButtons().forEach((button) => {
-  const isDropdownButton = button.parentElement.classList.contains('dropdown')
+  const isDropdownButton = isDropdown(button)
   const isLink = button.classList.contains('link')
 
   button.setAttribute('role', isLink ? 'link' : 'button')
