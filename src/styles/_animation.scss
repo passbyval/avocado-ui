@@ -1,7 +1,8 @@
 @use "./variables";
+@use "sass:string";
 
-@mixin bounceShadow($color) {
-  @keyframes bounce {
+@mixin bounceShadow($color, $animation-name) {
+  @keyframes #{$animation-name} {
     0% {
       box-shadow: variables.getFocusOutline($color, 3px);
     }
@@ -24,9 +25,11 @@
 }
 
 @mixin createBounce($color) {
+  $animation-name: string.unique-id();
+
   &.bounce {
-    @include bounceShadow($color);
-    animation-name: bounce;
+    @include bounceShadow($color, $animation-name);
+    animation-name: $animation-name;
     animation-duration: 0.4s;
     animation-timing-function: ease-in-out;
   }
