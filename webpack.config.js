@@ -19,18 +19,17 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
+          'css-loader',
           {
-            loader: 'css-loader',
+            loader: 'postcss-loader',
             options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')()
+              ]
             }
-          }
+          },
+          'sass-loader'
         ]
       },
       {
