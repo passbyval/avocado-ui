@@ -5,3 +5,4 @@
 ```
 npm run start:dev
 ```
+Navigate to http://localhost:7005/
