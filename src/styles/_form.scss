@@ -1,8 +1,16 @@
 .form {
   &.inline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
     .select, .btn, .dropdown, .label, .checkbox {
       display: inline-block;
       vertical-align: middle;
+    }
+
+    .label {
+      padding-bottom: 0px;
     }
   }
 }

@@ -17,7 +17,7 @@
   padding: variables.$standard-padding * 2;
   margin: variables.$standard-padding * 2;
   background: white;
-  border-radius: variables.$border-radius;
+  border-radius: variables.$standard-border-radius;
   box-shadow: variables.$box-shadow;
 
   & h1:first-child {

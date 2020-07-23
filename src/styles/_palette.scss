@@ -1,4 +1,5 @@
 @use "./variables";
+@use "./outline";
 
 $degrees: 90deg;
 
@@ -6,7 +7,7 @@ $degrees: 90deg;
   $gradient: $degrees;
   width: 100%;
   min-height: 100px;
-  border-radius: variables.$border-radius;
+  border-radius: variables.$standard-border-radius;
   box-shadow: variables.$box-shadow;
   transition: box-shadow 0.2s ease-in-out;
   max-width: 1000px;
@@ -20,6 +21,6 @@ $degrees: 90deg;
   background: linear-gradient(unquote(($gradient)));
 
   &:hover {
-    box-shadow: variables.getFocusOutline(variables.$blue);
+    box-shadow: outline.getFocusOutline(variables.$blue);
   }
 }

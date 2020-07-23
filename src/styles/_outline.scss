@@ -1,0 +1,8 @@
+@function getFocusOutline($color, $spread: 3px) {
+  @return 0px 0px 0px $spread rgba($color, .5);
+}
+
+@mixin createOutline($color) {
+  outline: 0;
+  box-shadow: getFocusOutline($color);
+}

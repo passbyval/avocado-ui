@@ -1,7 +1,10 @@
 @use "./variables";
 @use "./animation";
 @use "./checkmark";
+@use "./outline";
 @use "sass:map";
+
+$default-color: variables.$grey;
 
 .checkbox {
   @extend.input-base;
@@ -11,12 +14,18 @@
   width: variables.$checkbox-size;
   background-color: white;
   border: 1px solid variables.$checkbox-color;
-  border-radius: variables.$border-radius;
+  border-radius: variables.$standard-border-radius;
   position: relative;
   margin-left: variables.$checkbox-position-offset;
 
   &:focus {
     outline: 0;
+  }
+
+  &:focus {
+    &:before {
+      @include outline.createOutline($default-color);
+    }
   }
 
   &.outline {
@@ -25,17 +34,17 @@
     }
 
     &:after {
-      @include checkmark.create(variables.$grey);
+      @include checkmark.create($default-color);
     }
   }
 
   &:before {
     content: "";
     transition: background-color 0.2s ease-in-out;
-    background-color: variables.$grey;
+    background-color: $default-color;
     position: absolute;
-    border: 1px solid variables.$grey;
-    border-radius: variables.$border-radius;
+    border: 1px solid $default-color;
+    border-radius: variables.$standard-border-radius;
     width: variables.$checkbox-size;
     height: variables.$checkbox-size;
     left: -(variables.$checkbox-position-offset);
@@ -60,7 +69,7 @@
 
   &:hover {
     &:before {
-      background-color: darken(variables.$grey, variables.$hover-darken-amount);
+      background-color: darken($default-color, variables.$hover-darken-amount);
     }
 
     &.outline {
@@ -111,7 +120,7 @@
 
       &:focus {
         &:before {
-          @include variables.createOutline($color);
+          @include outline.createOutline($color);
         }
       }
 

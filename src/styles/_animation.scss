@@ -1,25 +1,26 @@
 @use "./variables";
+@use "./outline";
 @use "sass:string";
 
 @mixin bounceShadow($color, $animation-name: string.unique-id()) {
   @keyframes #{$animation-name} {
     0% {
-      box-shadow: variables.getFocusOutline($color, 3px);
+      box-shadow: outline.getFocusOutline($color, 3px);
     }
     20% {
-      box-shadow: variables.getFocusOutline($color, 2px);
+      box-shadow: outline.getFocusOutline($color, 2px);
     }
     40% {
-      box-shadow: variables.getFocusOutline($color, 1px);
+      box-shadow: outline.getFocusOutline($color, 1px);
     }
     60% {
-      box-shadow: variables.getFocusOutline($color, 3px);
+      box-shadow: outline.getFocusOutline($color, 3px);
     }
     80% {
-      box-shadow: variables.getFocusOutline($color, 4px);
+      box-shadow: outline.getFocusOutline($color, 4px);
     }
     100% {
-      box-shadow: variables.getFocusOutline($color, 3px);
+      box-shadow: outline.getFocusOutline($color, 3px);
     }
   }
 }

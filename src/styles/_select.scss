@@ -1,5 +1,6 @@
 @use "./variables";
 @use "./animation";
+@use "./outline";
 
 $border-color: variables.$dark-grey;
 $font-color: variables.$black;
@@ -17,7 +18,7 @@ $font-color: variables.$black;
   color: $font-color;
 
   &:focus {
-    @include variables.createOutline($border-color);
+    @include outline.createOutline($border-color);
   }
 
   background-image:

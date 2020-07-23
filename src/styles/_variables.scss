@@ -24,25 +24,17 @@ $friendly-names: (
   "grey": "default"
 );
 
-@function getFocusOutline($color, $spread: 3px) {
-  @return 0px 0px 0px $spread rgba($color, .5);
-}
-
-@mixin createOutline($color) {
-  outline: 0;
-  box-shadow: getFocusOutline($color);
-}
+$gradient-step: (100 / length($colors));
 
 $checkbox-size: 20px;
 $checkbox-color: $grey;
 $checkmark-border-width: 3px;
 $checkbox-position-offset: 1px;
 
-$border-radius: 4px;
-$font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$gradient-step: (100 / length($colors));
-$box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.1);
+$standard-border-radius: 4px;
 $standard-padding: 15px;
+$font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.1);
 $input-height: 40px;
 $input-font-size: 15px;
 $hover-darken-amount: 12;
@@ -50,6 +42,6 @@ $hover-darken-amount: 12;
 .input-base {
   font-family: $font-family;
   height: $input-height;
-  border-radius: $border-radius;
+  border-radius: $standard-border-radius;
   font-size: $input-font-size;
 }

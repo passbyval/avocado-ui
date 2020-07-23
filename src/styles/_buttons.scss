@@ -1,6 +1,7 @@
 @use "./typography";
 @use "./variables";
 @use "./animation";
+@use "./outline";
 @use "sass:map";
 
 $link-color: variables.$dark-cyan;
@@ -46,7 +47,7 @@ $link-color: variables.$dark-cyan;
     }
 
     &:focus {
-      @include variables.createOutline($link-color);
+      @include outline.createOutline($link-color);
     }
   }
 
@@ -65,7 +66,7 @@ $link-color: variables.$dark-cyan;
       }
 
       &:focus {
-        box-shadow: variables.getFocusOutline($color, 3px);
+        box-shadow: outline.getFocusOutline($color, 3px);
       }
 
       &.outline {
@@ -96,14 +97,14 @@ $link-color: variables.$dark-cyan;
     box-shadow: none;
 
     &:first-child {
-      border-top-left-radius: variables.$border-radius;
-      border-bottom-left-radius: variables.$border-radius;
+      border-top-left-radius: variables.$standard-border-radius;
+      border-bottom-left-radius: variables.$standard-border-radius;
       border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     &:last-child {
-      border-top-right-radius: variables.$border-radius;
-      border-bottom-right-radius: variables.$border-radius;
+      border-top-right-radius: variables.$standard-border-radius;
+      border-bottom-right-radius: variables.$standard-border-radius;
       border-left: 1px solid rgba(255, 255, 255, 0.2);
     }
   }
