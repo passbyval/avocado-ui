@@ -1,7 +1,7 @@
 @use "./variables";
 @use "sass:string";
 
-@mixin bounceShadow($color, $animation-name) {
+@mixin bounceShadow($color, $animation-name: string.unique-id()) {
   @keyframes #{$animation-name} {
     0% {
       box-shadow: variables.getFocusOutline($color, 3px);
@@ -24,13 +24,23 @@
   }
 }
 
-@mixin createBounce($color) {
+.animation-options {
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin createBounce($color, $pseudo: false) {
   $animation-name: string.unique-id();
 
-  &.bounce {
-    @include bounceShadow($color, $animation-name);
-    animation-name: $animation-name;
-    animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
-  }
+  @if $pseudo == false {
+    &.bounce {
+      @include bounceShadow($color, $animation-name);
+      @extend.animation-options;
+      animation-name: $animation-name;
+    }
+   } @else {
+     @include bounceShadow($color, $animation-name);
+     @extend.animation-options;
+     animation-name: $animation-name;
+   }
 }

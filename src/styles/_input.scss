@@ -1,18 +1,21 @@
 @use "./variables";
 @use "./animation";
 
-$border-color: variables.$grey;
+$border-color: variables.$dark-grey;
 $border-width: 1;
 
 .input {
   @extend.input-base;
   @include animation.createBounce($border-color);
+  display: block;
   padding-left: variables.$standard-padding;
   padding-right: variables.$standard-padding;
   border: #{$border-width}px solid $border-color;
   padding-top: 0px;
   padding-bottom: 0px;
   height: variables.$input-height - ($border-width * 2);
+  box-shadow: variables.$box-shadow;
+  color: variables.$black;
 
   &:focus {
     @include variables.createOutline($border-color);

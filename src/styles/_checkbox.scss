@@ -1,0 +1,133 @@
+@use "./variables";
+@use "./animation";
+@use "sass:map";
+
+.checkbox {
+  @extend.input-base;
+  margin: 0;
+  cursor: pointer;
+  height: variables.$checkbox-size;
+  width: variables.$checkbox-size;
+  background-color: white;
+  border: 1px solid variables.$checkbox-color;
+  border-radius: variables.$border-radius;
+  position: relative;
+  margin-left: variables.$checkbox-position-offset;
+
+  &.outline {
+    &:before {
+      background: white;
+    }
+
+    &:after {
+      border-bottom: variables.$checkmark-border-width solid variables.$grey;
+      border-right: variables.$checkmark-border-width solid variables.$grey;
+    }
+  }
+
+  &:before {
+    content: "";
+    background: variables.$grey;
+    position: absolute;
+    border: 1px solid variables.$grey;
+    border-radius: variables.$border-radius;
+    width: variables.$checkbox-size;
+    height: variables.$checkbox-size;
+    left: -(variables.$checkbox-position-offset);
+    top: -(variables.$checkbox-position-offset);
+    box-shadow: variables.$box-shadow;
+  }
+
+  &:after {
+    transition: opacity 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    top: 45%;
+    left: 1.5px;
+    right: 0;
+    transform: translateY(-50%) rotate(45deg);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2px;
+    opacity: 1;
+    width: variables.$checkbox-size / 4;
+    height: variables.$checkbox-size / 2;
+    border-bottom: variables.$checkmark-border-width solid white;
+    border-right: variables.$checkmark-border-width solid white;
+  }
+
+  + .label {
+    margin-left: 30px;
+  }
+
+  &:not(:checked) {
+    &:after {
+      opacity: 0;
+    }
+
+    &:before {
+      background: white;
+    }
+  }
+
+  // &.bounce {
+  //   &:before {
+  //     @include animation.createBounce(variables.$checkbox-color, true);
+  //   }
+  // }
+
+  @each $name, $color in variables.$colors {
+    &.#{map.get(variables.$friendly-names, $name)} {
+      border: 1px solid $color;
+
+      &:before {
+        border: 1px solid $color;
+        background: $color;
+      }
+
+      &:not(:checked) {
+        &:before {
+          background: white;
+        }
+      }
+
+      &:after {
+        border-bottom: variables.$checkmark-border-width solid white;
+        border-right: variables.$checkmark-border-width solid white;
+      }
+
+      &:focus {
+        &:before {
+          @include variables.createOutline($color);
+        }
+      }
+
+      &.bounce {
+        &:before {
+          @include animation.createBounce($color, true);
+        }
+      }
+
+      &.outline {
+        &:after {
+          border-bottom: variables.$checkmark-border-width solid $color;
+          border-right: variables.$checkmark-border-width solid $color;
+        }
+
+        &:before {
+          background: white;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  // &:focus {
+  //   &:before {
+  //     @include variables.createOutline(variables.$checkbox-color);
+  //   }
+  // }
+}

@@ -5,6 +5,8 @@ $grey: #9CA3AB;
 $cyan: #08b2e3;
 $light-grey: #F4F5F6;
 $dark-cyan: #08ABD9;
+$dark-grey: #9198A1;
+$black: black;
 
 $colors: (
   "red": $red,
@@ -31,16 +33,20 @@ $friendly-names: (
   box-shadow: getFocusOutline($color);
 }
 
+$checkbox-size: 25px;
+$checkbox-color: $grey;
+$checkmark-border-width: 3px;
+$checkbox-position-offset: 1px;
+
 $border-radius: 4px;
 $font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $gradient-step: (100 / length($colors));
-$box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.1);
+$box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.1);
 $standard-padding: 15px;
 $input-height: 40px;
 $input-font-size: 15px;
 
 .input-base {
-  display: inline-block;
   font-family: $font-family;
   height: $input-height;
   border-radius: $border-radius;

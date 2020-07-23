@@ -5,6 +5,7 @@ $background-color: #FFF;
 
 .dropdown {
   @extend.input-base;
+  display: inline-block;
   position: relative;
   min-height: variables.$input-height;
 

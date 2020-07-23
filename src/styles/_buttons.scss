@@ -8,6 +8,7 @@ $link-color: variables.$dark-cyan;
 .btn {
   @extend.input-base;
   cursor: pointer;
+  display: inline-block;
   font-weight: 500;
   border: none;
   transition-property: background, box-shadow, color, text-decoration, border;
@@ -37,6 +38,7 @@ $link-color: variables.$dark-cyan;
     padding-left: 15px;
     padding-right: 15px;
     text-decoration: none;
+    box-shadow: none;
 
     &:hover, &:focus {
       text-decoration: underline;

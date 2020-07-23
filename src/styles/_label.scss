@@ -3,10 +3,19 @@
 .label {
   font-family: variables.$font-family;
   font-size: variables.$input-font-size;
-  margin-right: variables.$standard-padding;
-  display: block;
-  padding-bottom: 3px;
+  padding-right: 2px;
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 5px;
   font-weight: 400;
+
+  &.required {
+    &:after {
+      content: "*";
+      color: variables.$red;
+      margin-left: 2px;
+    }
+  }
 
   &.inline {
     display: inline-block;

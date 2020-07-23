@@ -1,24 +1,28 @@
 @use "./variables";
 @use "./animation";
 
-$border-color: variables.$grey;
+$border-color: variables.$dark-grey;
+$font-color: variables.$black;
 
 .select {
   @extend.input-base;
   @include animation.createBounce($border-color);
+  display: block;
   padding-left: variables.$standard-padding;
   padding-right: variables.$standard-padding * 2;
+  box-shadow: variables.$box-shadow;
   appearance: none;
   cursor: pointer;
   border: 1px solid $border-color;
+  color: $font-color;
 
   &:focus {
     @include variables.createOutline($border-color);
   }
 
   background-image:
-    linear-gradient(45deg, transparent 50%, black 50%),
-    linear-gradient(135deg, black 50%, transparent 50%);
+    linear-gradient(45deg, transparent 50%, $font-color 50%),
+    linear-gradient(135deg, $font-color 50%, transparent 50%);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px),
