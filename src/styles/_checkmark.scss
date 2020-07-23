@@ -1,0 +1,8 @@
+@use "./variables";
+
+@mixin create($color: white) {
+  border-bottom: variables.$checkmark-border-width solid $color;
+  border-right: variables.$checkmark-border-width solid $color;
+  width: variables.$checkbox-size / 4;
+  height: variables.$checkbox-size / 2;
+}

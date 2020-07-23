@@ -61,7 +61,7 @@ $link-color: variables.$dark-cyan;
 
       &:hover, &:focus {
         outline: none;
-        background: darken($color, 12);
+        background: darken($color, variables.$hover-darken-amount);
       }
 
       &:focus {

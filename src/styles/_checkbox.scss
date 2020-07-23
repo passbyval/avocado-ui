@@ -1,5 +1,6 @@
 @use "./variables";
 @use "./animation";
+@use "./checkmark";
 @use "sass:map";
 
 .checkbox {
@@ -14,20 +15,24 @@
   position: relative;
   margin-left: variables.$checkbox-position-offset;
 
+  &:focus {
+    outline: 0;
+  }
+
   &.outline {
     &:before {
-      background: white;
+      background-color: white;
     }
 
     &:after {
-      border-bottom: variables.$checkmark-border-width solid variables.$grey;
-      border-right: variables.$checkmark-border-width solid variables.$grey;
+      @include checkmark.create(variables.$grey);
     }
   }
 
   &:before {
     content: "";
-    background: variables.$grey;
+    transition: background-color 0.2s ease-in-out;
+    background-color: variables.$grey;
     position: absolute;
     border: 1px solid variables.$grey;
     border-radius: variables.$border-radius;
@@ -39,8 +44,8 @@
   }
 
   &:after {
-    transition: opacity 0.2s ease-in-out;
     content: "";
+    transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
     position: absolute;
     top: 45%;
     left: 1.5px;
@@ -50,10 +55,19 @@
     margin-right: auto;
     margin-bottom: 2px;
     opacity: 1;
-    width: variables.$checkbox-size / 4;
-    height: variables.$checkbox-size / 2;
-    border-bottom: variables.$checkmark-border-width solid white;
-    border-right: variables.$checkmark-border-width solid white;
+    @include checkmark.create(white);
+  }
+
+  &:hover {
+    &:before {
+      background-color: darken(variables.$grey, variables.$hover-darken-amount);
+    }
+
+    &.outline {
+      &:after {
+        @include checkmark.create(white);
+      }
+    }
   }
 
   + .label {
@@ -66,15 +80,9 @@
     }
 
     &:before {
-      background: white;
+      background-color: white;
     }
   }
-
-  // &.bounce {
-  //   &:before {
-  //     @include animation.createBounce(variables.$checkbox-color, true);
-  //   }
-  // }
 
   @each $name, $color in variables.$colors {
     &.#{map.get(variables.$friendly-names, $name)} {
@@ -82,18 +90,23 @@
 
       &:before {
         border: 1px solid $color;
-        background: $color;
+        background-color: $color;
+      }
+
+      &:hover {
+        &:before {
+          background-color: darken($color, variables.$hover-darken-amount);
+        }
       }
 
       &:not(:checked) {
         &:before {
-          background: white;
+          background-color: white;
         }
       }
 
       &:after {
-        border-bottom: variables.$checkmark-border-width solid white;
-        border-right: variables.$checkmark-border-width solid white;
+        @include checkmark.create(white);
       }
 
       &:focus {
@@ -110,24 +123,25 @@
 
       &.outline {
         &:after {
-          border-bottom: variables.$checkmark-border-width solid $color;
-          border-right: variables.$checkmark-border-width solid $color;
+          @include checkmark.create($color);
         }
 
         &:before {
-          background: white;
+          background-color: white;
+        }
+
+        &:hover {
+          &:checked {
+            &:before {
+              background-color: $color;
+            }
+
+            &:after {
+              @include checkmark.create(white);
+            }
+          }
         }
       }
     }
   }
-
-  &:focus {
-    outline: 0;
-  }
-
-  // &:focus {
-  //   &:before {
-  //     @include variables.createOutline(variables.$checkbox-color);
-  //   }
-  // }
 }
