@@ -1,10 +1,6 @@
 .form {
   &.inline {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
-    .select, .btn, .dropdown, .label, .checkbox {
+    .select, .btn, .dropdown, .label, .checkbox, .radio {
       display: inline-block;
       vertical-align: middle;
     }

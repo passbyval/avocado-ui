@@ -4,7 +4,7 @@ const SHOW_CLASS = 'show'
 const BOUNCE_MS = 450
 
 const getAllButtons = () => document.querySelectorAll('.btn')
-const getAllInputs = () => document.querySelectorAll('.select, .input, .checkbox')
+const getAllInputs = () => document.querySelectorAll('.select, .input, .checkbox, .radio')
 const getDropdownButtons = () => document.querySelectorAll('.dropdown > .btn')
 
 const isDropdown = (element) => {

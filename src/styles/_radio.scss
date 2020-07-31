@@ -1,0 +1,87 @@
+@use "./variables";
+@use "./outline";
+@use "./animation";
+@use "sass:map";
+
+$default-color: variables.$grey;
+
+.radio {
+  @extend.input-base;
+  height: variables.$checkbox-size;
+  width: variables.$checkbox-size;
+  position: relative;
+  cursor: pointer;
+
+  + .label {
+    margin-left: 23px;
+  }
+
+  &:focus {
+    outline: none;
+
+    &:before {
+      @include outline.createOutline($default-color);
+    }
+  }
+
+  &:before {
+    content: "";
+    background-color: white;
+    position: absolute;
+    border: 1px solid $default-color;
+    border-radius: 100%;
+    width: variables.$checkbox-size;
+    height: variables.$checkbox-size;
+    left: -(variables.$checkbox-position-offset);
+    top: -(variables.$checkbox-position-offset);
+    box-shadow: variables.$box-shadow;
+  }
+
+  &:checked {
+    &:after {
+      opacity: 1
+    }
+  }
+
+  &:after {
+    content: "";
+    transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    position: absolute;
+    width: (variables.$checkbox-size / 1.45);
+    height: (variables.$checkbox-size / 1.45);
+    background-color: $default-color;
+    border-radius: 100%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%) rotate(50deg);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2px;
+    opacity: 0;
+  }
+
+  @each $name, $color in variables.$colors {
+    &.#{map.get(variables.$friendly-names, $name)} {
+      &:after {
+        background-color: $color;
+      }
+
+      &.bounce {
+        &:before {
+          @include animation.createBounce($color, true);
+        }
+      }
+
+      &:focus {
+        &:before {
+          @include outline.createOutline($color);
+        }
+      }
+
+      &:before {
+        border: 1px solid $color;
+      }
+    }
+  }
+}

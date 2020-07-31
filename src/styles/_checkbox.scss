@@ -3,6 +3,7 @@
 @use "./checkmark";
 @use "./outline";
 @use "sass:map";
+@use "sass:color";
 
 $default-color: variables.$grey;
 
@@ -69,7 +70,7 @@ $default-color: variables.$grey;
 
   &:hover {
     &:before {
-      background-color: darken($default-color, variables.$hover-darken-amount);
+      background-color: color.scale($default-color, $lightness: variables.$hover-darken-amount);
     }
 
     &.outline {
@@ -104,7 +105,7 @@ $default-color: variables.$grey;
 
       &:hover {
         &:before {
-          background-color: darken($color, variables.$hover-darken-amount);
+          background-color: color.scale($color, $lightness: variables.$hover-darken-amount);
         }
       }
 

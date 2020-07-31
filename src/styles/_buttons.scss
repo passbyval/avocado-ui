@@ -3,6 +3,7 @@
 @use "./animation";
 @use "./outline";
 @use "sass:map";
+@use "sass:color";
 
 $link-color: variables.$dark-cyan;
 
@@ -32,6 +33,10 @@ $link-color: variables.$dark-cyan;
     }
   }
 
+  &:focus {
+    outline: 0;
+  }
+
   &.link {
     color: $link-color;
     box-shadow: none;
@@ -41,9 +46,9 @@ $link-color: variables.$dark-cyan;
     text-decoration: none;
     box-shadow: none;
 
-    &:hover, &:focus {
+    &:hover {
       text-decoration: underline;
-      color: darken($link-color, 15);
+      color: color.scale($link-color, $lightness: variables.$hover-darken-amount);
     }
 
     &:focus {
@@ -60,9 +65,8 @@ $link-color: variables.$dark-cyan;
       padding-left: variables.$standard-padding;
       padding-right: variables.$standard-padding;
 
-      &:hover, &:focus {
-        outline: none;
-        background: darken($color, variables.$hover-darken-amount);
+      &:hover {
+        background: color.scale($color, $lightness: variables.$hover-darken-amount);
       }
 
       &:focus {
