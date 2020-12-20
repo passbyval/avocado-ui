@@ -59,9 +59,9 @@ $default-color: variables.$grey;
     background-color: $default-color;
     border-radius: 100%;
     top: 50%;
-    left: 3px;
+    left: 50%;
     right: 0;
-    transform: translateY(-50%) rotate(50deg);
+    transform: translate(-50%, -50%) rotate(50deg);
     opacity: 0;
   }
 
